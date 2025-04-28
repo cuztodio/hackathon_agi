@@ -19,7 +19,7 @@ public class MovimentacaoService {
 
     public Movimentacao criarMovimento(Movimentacao movimentacao) {
         movimentacao.setDataMovimentacao(LocalDateTime.now());
-        movimentacao.setMovimentacao(StatusMovimentacao.EMPRESTADO);
+        movimentacao.setStatusMovimentacao(StatusMovimentacao.EMPRESTADO);
         return movimentacaoRepository.save(movimentacao);
     }
 
@@ -27,7 +27,7 @@ public class MovimentacaoService {
         return movimentacaoRepository.findById(movimentoId)
                 .map(m -> {
                     m.setDataMovimentacao(LocalDateTime.now());
-                    m.setMovimentacao(StatusMovimentacao.DEVOLUCAO);
+                    m.setStatusMovimentacao(StatusMovimentacao.DEVOLUCAO);
                     return movimentacaoRepository.save(m);
                 })
                 .orElseThrow(() -> new RuntimeException("Movimento nao encontrado."));

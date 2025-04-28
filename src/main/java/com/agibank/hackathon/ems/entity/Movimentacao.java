@@ -27,5 +27,5 @@ public class Movimentacao {
     @PastOrPresent
     private LocalDateTime dataMovimentacao;
 
-    private StatusMovimentacao movimentacao;
+    private StatusMovimentacao statusMovimentacao;
 }
