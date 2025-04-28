@@ -18,6 +18,9 @@ public interface MovimentacaoRepository extends MongoRepository<Movimentacao, St
     //Movimentacoes do equipamento
     List<Movimentacao> findByEquipamentoId(String equipamentoId);
 
+    //Movimentções do equipamento por cpf
+    List<Movimentacao> findByCpf(String cpf);
+
     //Movimentacoes por status
     List<Movimentacao> findByStatus(StatusMovimentacao status);
 
