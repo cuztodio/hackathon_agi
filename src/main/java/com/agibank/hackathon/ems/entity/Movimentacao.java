@@ -17,10 +17,10 @@ public class Movimentacao {
     private String id;
 
     @NotBlank
-    private String employeeId;
+    private String funcionarioId;
 
     @NotBlank
-    private String equipmentId;
+    private String equipmentoId;
 
     @PastOrPresent
     private LocalDateTime dataMovimentacao;
