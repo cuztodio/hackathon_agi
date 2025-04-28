@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RequestMapping ("/funcionario")
 @RestController
@@ -19,12 +21,15 @@ public class FuncionarioController {
     @Autowired
     FuncionarioRepository funcionarioRepository;
 
-
-
     @PostMapping
     public ResponseEntity<String> cadastroFuncionario (@RequestBody CriarFuncionarioRequest request) {
         funcionarioService.cadastrarFuncionario(request);
         return ResponseEntity.ok("Cadastro Concluído");
+    }
+
+    @GetMapping
+    List<Funcionario> listarFuncionarios(){
+        return (List<Funcionario>) funcionarioRepository.findAll();
     }
 
 
