@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,6 +24,9 @@ public class Movimentacao {
 
     @NotBlank
     private String equipamentoId;
+
+    @UniqueElements
+    private String cpf;
 
     @PastOrPresent
     private LocalDateTime dataMovimentacao;
