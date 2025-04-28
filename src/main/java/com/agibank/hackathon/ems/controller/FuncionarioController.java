@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
@@ -41,11 +42,11 @@ public class FuncionarioController {
     }
 
 
-// @PatchMapping("/cpf/{cpf}/desligar")
-// public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf, @RequestBody SolicitarDesligamentoFuncionarioRequest request) {
-//    funcionarioService.solicitarDesligamento(cpf, request);
-//    return ResponseEntity.ok("Funcionário desligado com sucesso!");
-//}
+  @PatchMapping("/cpf/{cpf}/desligar")
+ public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf, @RequestBody SolicitarDesligamentoFuncionarioRequest request) throws InvocationTargetException, IllegalAccessException {
+    funcionarioService.solicitarDesligamento(cpf, request);
+    return ResponseEntity.ok("Funcionário desligado com sucesso!");
+}
 
 
 

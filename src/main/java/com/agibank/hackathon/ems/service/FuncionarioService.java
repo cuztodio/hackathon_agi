@@ -23,6 +23,9 @@ import java.lang.reflect.InvocationTargetException;
     @Autowired
     private FuncionarioMapper funcionarioMapper;
 
+    @Autowired
+    private DesligamentoService desligamentoService;
+
     public Funcionario cadastrarFuncionario (CriarFuncionarioRequest request) {
         Funcionario funcionario = funcionarioMapper.cadastroFuncionario(request);
         return funcionarioRepository.save(funcionario);
@@ -34,20 +37,22 @@ import java.lang.reflect.InvocationTargetException;
     }
 
 
-//    public Funcionario solicitarDesligamento(String cpf, SolicitarDesligamentoFuncionarioRequest request) throws InvocationTargetException, IllegalAccessException {
-//        Funcionario funcionario = verificarFuncionarioExistente(cpf);
-//        BeanUtilsBean.getInstance().copyProperties(funcionario, request);
-//        funcionario.setStatus(request.getStatus());
-//        return funcionarioRepository.save(funcionario);
-//
-//        if (request.getStatus() == StatusFuncionario.EM_DESLIGAMENTO){
-//            boolean aprovado = DesligamentoSerivice.aprovarDesligamento(funcionario.getCpf());
-//        }
-//        if (!aprovado) {
-//            throw new DesligamentoNaoAprovadoException("Solicitação de desligamento não aprovada, verifique suas pendências");
-//        }
-//        return funcionarioRepository.save(funcionario);
-//    }
+  public Funcionario solicitarDesligamento(String cpf, SolicitarDesligamentoFuncionarioRequest request) throws InvocationTargetException, IllegalAccessException {
+        Funcionario funcionario = verificarFuncionarioExistente(cpf);
+
+        BeanUtilsBean.getInstance().copyProperties(funcionario, request);
+        funcionario.setStatus(request.getStatus());
+         boolean aprovado = false;
+
+
+        if (request.getStatus() == StatusFuncionario.EM_DESLIGAMENTO){
+            aprovado = desligamentoService.aprovarDesligamento(funcionario.getCpf());
+        }
+        if (!aprovado) {
+            throw new DesligamentoNaoAprovadoException("Solicitação de desligamento não aprovada, verifique suas pendências");
+        }
+        return funcionarioRepository.save(funcionario);
+    }
 
     public Funcionario verificarFuncionarioExistente (String cpf){
         return funcionarioRepository.findByCpf(cpf)
