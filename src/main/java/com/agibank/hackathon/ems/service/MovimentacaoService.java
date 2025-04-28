@@ -1,5 +1,6 @@
 package com.agibank.hackathon.ems.service;
-
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import com.agibank.hackathon.ems.entity.Movimentacao;
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import com.agibank.hackathon.ems.repository.MovimentacaoRepository;
