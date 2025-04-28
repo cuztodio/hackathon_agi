@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Builder
 @Data
-public class EditarStatusFuncionarioRequest {
+public class SolicitarDesligamentoFuncionarioRequest {
     private StatusFuncionario status;
+
+
 }
