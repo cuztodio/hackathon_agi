@@ -30,5 +30,5 @@ public interface MovimentacaoRepository extends MongoRepository<Movimentacao, St
     List<Movimentacao> findPendencias(String funcionarioId);
 
     // Find movimentacoes por funcionario e equipamento
-    List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId););
+    List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId);
 }
