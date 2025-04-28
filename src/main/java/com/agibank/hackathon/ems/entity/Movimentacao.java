@@ -20,7 +20,7 @@ public class Movimentacao {
     private String funcionarioId;
 
     @NotBlank
-    private String equipmentoId;
+    private String equipamentoId;
 
     @PastOrPresent
     private LocalDateTime dataMovimentacao;
