@@ -1,6 +1,7 @@
 package com.agibank.hackathon.ems.service;
 
 import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
+import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Funcionario;
 import com.agibank.hackathon.ems.enums.StatusFuncionario;
@@ -27,7 +28,7 @@ import java.lang.reflect.InvocationTargetException;
         return funcionarioRepository.save(funcionario);
     }
 
-    public Funcionario editarFuncionario (String id, SolicitarDesligamentoFuncionarioRequest request){
+    public Funcionario editarFuncionario (String id, EditarFuncionarioRequest request){
         Funcionario funcionarioAlterado = funcionarioMapper.editarFuncionario(id,request);
         return funcionarioRepository.save(funcionarioAlterado);
     }

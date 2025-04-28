@@ -1,12 +1,16 @@
 package com.agibank.hackathon.ems.controller;
 
 
-import com.agibank.hackathon.ems.mapper.OrdemDeCompraMapper;
+import com.agibank.hackathon.ems.controller.request.oc.CriarOrdemDeCompraRequest;
+import com.agibank.hackathon.ems.controller.request.oc.EditarStatusOrdemDeCompraRequest;
+import com.agibank.hackathon.ems.entity.OrdemDeCompra;
 import com.agibank.hackathon.ems.repository.OrdemDeCompraRepository;
+import com.agibank.hackathon.ems.service.OrdemDeCompraService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/compra")
 @RestController
@@ -16,10 +20,30 @@ public class OrdemDeCompraController {
     OrdemDeCompraRepository ocRepository;
 
     @Autowired
-    OrdemDeCompraMapper ocMapper;
+    OrdemDeCompraService ocService;
 
     @GetMapping
-    public 
+    List<OrdemDeCompra> listarOrdensDeCompra (){
+        return ocRepository.findAll();
+    }
+
+    @PostMapping
+    public ResponseEntity<String> criarOrdemDeCompra (@RequestBody CriarOrdemDeCompraRequest request) {
+        ocService.criarOrdemDeCompra(request);
+        return ResponseEntity.ok("Ordem de Compra Registrada");
+    }
+
+
+    /*
+    @PatchMapping ("/{id}")
+    public ResponseEntity<String> atualizarStatusOC (@PathVariable OrdemDeCompra id,
+                                                     @RequestBody EditarStatusOrdemDeCompraRequest request) {
+        ocService.alterarStatusOC(request);
+
+    }
+    
+     */
+
 
 
 

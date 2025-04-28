@@ -43,4 +43,17 @@ public class OrdemDeCompraService {
         return ocRepository.save(ordemDeCompra);
     }
 
+    /*
+    public OrdemDeCompra alterarStatusOC (String id, EditarStatusOrdemDeCompraRequest request) {
+
+        StatusOrdemDeCompra status = request.getComprado();
+        if (status == StatusOrdemDeCompra.PENDENTE) {
+            ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
+            //aloca equipamento para funcionario pelo id (cria nova movimentação)
+        }
+        return ocRepository.save(ordemDeCompra);
+    }
+
+     */
+
 }

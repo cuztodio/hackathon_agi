@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Repository
 public interface MovimentacaoRepository extends MongoRepository<Movimentacao, String> {
 
+    /*
     // Movimentacoes por usuario
     List<Movimentacao> findByFuncionarioId(String funcionarioId);
 
@@ -30,5 +31,7 @@ public interface MovimentacaoRepository extends MongoRepository<Movimentacao, St
     List<Movimentacao> findPendencias(String funcionarioId);
 
     // Find movimentacoes por funcionario e equipamento
-    List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId);
+    //List<Movimentacao> findByFuncionarioIdAndEquipamentoId(String funcionarioId, String equipamentoId);
+
+     */
 }

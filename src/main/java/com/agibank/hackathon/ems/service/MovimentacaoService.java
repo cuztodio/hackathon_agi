@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovimentacaoService {
 
+    /*
     private final MovimentacaoRepository movimentacaoRepository;
 
     public Movimentacao criarMovimento(Movimentacao movimentacao) {
@@ -36,4 +37,6 @@ public class MovimentacaoService {
     public List<Movimentacao> getHistoricoFuncionario(String funcionarioId) {
         return movimentacaoRepository.findByFuncionarioId(funcionarioId);
     }
+
+     */
 }
