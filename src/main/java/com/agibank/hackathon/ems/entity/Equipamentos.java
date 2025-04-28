@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -20,6 +21,7 @@ public class Equipamentos {
     private String tipo;
     @NotBlank
     private String modelo;
-    @NotBlank
+
+    @Indexed (unique = true)
     private String sku;
 }

@@ -1,5 +1,6 @@
 package com.agibank.hackathon.ems.mapper;
-import com.agibank.hackathon.ems.controller.request.*;
+import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
+import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Funcionario;
 import com.agibank.hackathon.ems.enums.StatusFuncionario;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.agibank.hackathon.ems.controller.request;
+package com.agibank.hackathon.ems.controller.request.funcionario;
 
 import com.agibank.hackathon.ems.enums.StatusFuncionario;
 import jakarta.validation.constraints.NotBlank;

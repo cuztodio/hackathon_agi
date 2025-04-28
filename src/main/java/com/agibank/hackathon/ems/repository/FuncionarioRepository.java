@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 
- public interface FuncionarioRepository extends MongoRepository<Funcionario, String> {
+public interface FuncionarioRepository extends MongoRepository<Funcionario, String> {
+
+
+
 
 
 
