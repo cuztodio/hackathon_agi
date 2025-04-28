@@ -15,7 +15,7 @@ public class MovimentacaoMapper {
                 .funcionarioId(request.getEmployeeId())
                 .equipamentoId(request.getEquipmentId())
                 .dataMovimentacao(request.getDataMovimentacao())
-                .movimentacao(StatusMovimentacao.EMPRESTADO)
+                .statusMovimentacao(StatusMovimentacao.EMPRESTADO)
                 .build();
     }
 

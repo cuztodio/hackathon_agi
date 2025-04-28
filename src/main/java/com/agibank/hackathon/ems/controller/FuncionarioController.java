@@ -2,6 +2,8 @@ package com.agibank.hackathon.ems.controller;
 
 
 import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
+import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
+import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Funcionario;
 import com.agibank.hackathon.ems.repository.FuncionarioRepository;
 import com.agibank.hackathon.ems.service.FuncionarioService;
@@ -31,6 +33,19 @@ public class FuncionarioController {
     List<Funcionario> listarFuncionarios(){
         return (List<Funcionario>) funcionarioRepository.findAll();
     }
+
+    @PutMapping("/{id}/editar")
+    public ResponseEntity<String> editarFuncionario (@PathVariable String id , @RequestBody EditarFuncionarioRequest request){
+        funcionarioService.editarFuncionario(id,request);
+        return ResponseEntity.ok("Funcionario editado com sucesso!");
+    }
+
+
+// @PatchMapping("/cpf/{cpf}/desligar")
+// public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf, @RequestBody SolicitarDesligamentoFuncionarioRequest request) {
+//    funcionarioService.solicitarDesligamento(cpf, request);
+//    return ResponseEntity.ok("Funcionário desligado com sucesso!");
+//}
 
 
 

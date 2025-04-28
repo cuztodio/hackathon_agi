@@ -19,9 +19,13 @@ public interface MovimentacaoRepository extends MongoRepository<Movimentacao, St
     //Movimentacoes do equipamento
     List<Movimentacao> findByEquipamentoId(String equipamentoId);
 
-    //Movimentacoes por status
-    List<Movimentacao> findByStatus(StatusMovimentacao status);
+    //Movimentções do equipamento por cpf
+    List<Movimentacao> findByCpf(String cpf);
 
+    //Movimentacoes por status
+    List<Movimentacao> findByStatusMovimentacao(StatusMovimentacao statusMovimentacao);
+
+    //Movimentacoes por data
     //Encontrar emprestimos ativos
     @Query ("{'dataDevolucao': null}")
     List<Movimentacao> findAtivos();
@@ -31,7 +35,13 @@ public interface MovimentacaoRepository extends MongoRepository<Movimentacao, St
     List<Movimentacao> findPendencias(String funcionarioId);
 
     // Find movimentacoes por funcionario e equipamento
+<<<<<<< HEAD
     //List<Movimentacao> findByFuncionarioIdAndEquipamentoId(String funcionarioId, String equipamentoId);
 
      */
+=======
+   // List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId);
+
+     List<Movimentacao> findByFuncionarioIdAndEquipamentoId(String funcionarioId, String equipamentoId);
+>>>>>>> 29b679401db56059299f9da50c1b700ea3987884
 }

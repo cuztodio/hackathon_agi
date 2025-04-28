@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 public class Desligamento {
     @Id
-    private String idFuncionario;
-    private StatusDesligamento statusDesligamento;
+    private String cpf;
+    private boolean desligado;
     private Date dataDesligamento;
 }
