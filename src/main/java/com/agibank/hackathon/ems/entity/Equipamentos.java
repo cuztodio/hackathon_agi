@@ -21,7 +21,5 @@ public class Equipamentos {
     private String tipo;
     @NotBlank
     private String modelo;
-
-    @Indexed (unique = true)
     private String sku;
 }
