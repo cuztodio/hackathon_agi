@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document
+@Document (collection = "funcionario")
 @Builder
 @Data
 public class Funcionario {
