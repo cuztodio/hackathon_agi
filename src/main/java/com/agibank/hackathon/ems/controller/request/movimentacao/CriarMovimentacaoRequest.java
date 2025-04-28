@@ -1,28 +1,22 @@
-package com.agibank.hackathon.ems.entity;
+package com.agibank.hackathon.ems.controller.request.movimentacao;
 
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Data
-@Document(collection = "Movimentacoes")
-public class Movimentacao {
-
-    @Id
-    private String id;
+@Builder
+public class CriarMovimentacaoRequest {
 
     @NotBlank
-    private String funcionarioId;
+    private String employeeId;
 
     @NotBlank
-    private String equipamentoId;
+    private String equipmentId;
 
     @PastOrPresent
     private LocalDateTime dataMovimentacao;
