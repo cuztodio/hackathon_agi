@@ -1,51 +1,28 @@
 package com.agibank.hackathon.ems.controller;
 
-import com.agibank.hackathon.ems.controller.request.desligamento.DesligamentoRequest;
-import com.agibank.hackathon.ems.entity.Desligamento;
-import com.agibank.hackathon.ems.entity.Movimentacao;
-import com.agibank.hackathon.ems.enums.StatusDesligamento;
-import com.agibank.hackathon.ems.repository.DesligamentoRepository;
-import com.agibank.hackathon.ems.repository.MovimentacaoRepository;
+import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
+import com.agibank.hackathon.ems.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Date;
-import java.util.List;
+
+import java.lang.reflect.InvocationTargetException;
 
 @RequestMapping("/desligamento")
 @RestController
 public class DesligamentoController {
 
     @Autowired
-    private DesligamentoRepository desligamentoRepository;
+    private FuncionarioService funcionarioService;
 
-    @Autowired
-    private MovimentacaoRepository movimentacaoRepository;
-
-    @PostMapping
-    public ResponseEntity<String> solicitarDesligamento(@RequestBody DesligamentoRequest request) {
-        // Verifica se há pendências de devolução de equipamentos
-        List<Movimentacao> pendencias = movimentacaoRepository.findPendencias(request.getIdFuncionario());
-
-        if (!pendencias.isEmpty()) {
-            return ResponseEntity.badRequest().body("Funcionário possui equipamentos pendentes para devolução.");
+    @PostMapping("/{cpf}")
+    public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf,
+                                                        @RequestBody SolicitarDesligamentoFuncionarioRequest request) {
+        try {
+            funcionarioService.solicitarDesligamento(cpf, request);
+            return ResponseEntity.ok("Solicitação de desligamento concluída com sucesso.");
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            return ResponseEntity.badRequest().body("Erro ao solicitar desligamento: " + e.getMessage());
         }
-
-        // Cria e salva o registro de desligamento
-        Desligamento desligamento = Desligamento.builder()
-                .idFuncionario(request.getIdFuncionario())
-                .statusDesligamento(StatusDesligamento.AUTORIZADO)
-                .dataDesligamento(new Date())
-                .build();
-
-        desligamentoRepository.save(desligamento);
-
-        return ResponseEntity.ok("Desligamento concluído com sucesso.");
-    }
-
-    @GetMapping("/pendencias/{idFuncionario}")
-    public ResponseEntity<List<Movimentacao>> consultarPendencias(@PathVariable String idFuncionario) {
-        List<Movimentacao> pendencias = movimentacaoRepository.findPendencias(idFuncionario);
-        return ResponseEntity.ok(pendencias);
     }
 }
