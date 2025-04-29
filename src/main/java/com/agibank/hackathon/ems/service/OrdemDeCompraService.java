@@ -39,8 +39,9 @@ public class OrdemDeCompraService {
             return ocRepository.findAll();
     }
 
-    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request) {
+    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request, String sku) {
         OrdemDeCompra ordemDeCompra = ocMapper.criarOrdemDeCompra(request);
+        ordemDeCompra.setSku(sku);
         return ocRepository.save(ordemDeCompra);
     }
 

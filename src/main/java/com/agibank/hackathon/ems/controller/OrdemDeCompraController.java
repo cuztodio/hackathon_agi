@@ -23,7 +23,7 @@ public class OrdemDeCompraController {
     @Autowired
     OrdemDeCompraService ocService;
 
-    @GetMapping("/listar")
+    @GetMapping
     List<OrdemDeCompra> listarOrdensDeCompra() {
         return ocRepository.findAll();
     }
@@ -34,8 +34,8 @@ public class OrdemDeCompraController {
     }
 
     @PostMapping
-    public ResponseEntity<String> criarOrdemDeCompra(@RequestBody CriarOrdemDeCompraRequest request) {
-        ocService.criarOrdemDeCompra(request);
+    public ResponseEntity<String> criarOrdemDeCompra(@RequestBody CriarOrdemDeCompraRequest request, String sku) {
+        ocService.criarOrdemDeCompra(request, sku);
         return ResponseEntity.ok("Ordem de Compra Registrada");
     }
 
