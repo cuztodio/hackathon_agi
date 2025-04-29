@@ -1,6 +1,5 @@
 package com.agibank.hackathon.ems.service;
 
-import com.agibank.hackathon.ems.controller.request.equipamento.EditarStatusEquipamentoRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 @Service
  public class FuncionarioService {
@@ -60,19 +58,6 @@ import java.util.List;
         return funcionarioRepository.findByCpf(cpf)
                 .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com CPF " + cpf + " não encontrado"));
     }
-
-    public List<Funcionario> listarFuncionariosPorStatus(String status) {
-        StatusFuncionario statusEnum;
-
-        try {
-            statusEnum = StatusFuncionario.valueOf(status.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Status inválido: " + status);
-        }
-
-        return funcionarioRepository.findByStatus(statusEnum);
-    }
-
 
 
 
