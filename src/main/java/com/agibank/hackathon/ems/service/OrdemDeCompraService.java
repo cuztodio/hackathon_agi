@@ -70,13 +70,13 @@ public class OrdemDeCompraService {
                     .tipo("Notebook")
                     .modelo("Dell Cinza")
                     .sku(ordemDeCompra.getSku())
-                    .statusEquipamento(StatusEquipamento.DISPONIVEL)
+                    .statusEquipamento(StatusEquipamento.ALOCADO)
                     .build();
             equipamentoRepository.save(equipamento);
 
             Movimentacao movimentacao = Movimentacao.builder()
                     .funcionarioId(ordemDeCompra.getIdFuncionario()) // ou funcionarioId
-                    .equipamentoId(equipamento.getId())
+                    .equipamentoId(equipamento.getIdEquipamento())
                     .dataMovimentacao(LocalDateTime.now())
                     .statusMovimentacao(StatusMovimentacao.EMPRESTADO)
                     .build();
