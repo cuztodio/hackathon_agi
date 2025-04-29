@@ -3,6 +3,7 @@ package com.agibank.hackathon.ems.controller;
 import com.agibank.hackathon.ems.controller.request.movimentacao.CriarMovimentacaoRequest;
 import com.agibank.hackathon.ems.controller.request.movimentacao.EditarMovimentacaoRequest;
 import com.agibank.hackathon.ems.entity.Movimentacao;
+import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import com.agibank.hackathon.ems.repository.MovimentacaoRepository;
 import com.agibank.hackathon.ems.service.MovimentacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,9 @@ public class MovimentacaoController {
         return ResponseEntity.ok(historico);
     }
 
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Movimentacao>> buscarPorStatus(@PathVariable StatusMovimentacao status) {
+        List<Movimentacao> movimentacoes = movimentacaoService.buscarPorStatus(status);
+        return ResponseEntity.ok(movimentacoes);
+    }
 }
