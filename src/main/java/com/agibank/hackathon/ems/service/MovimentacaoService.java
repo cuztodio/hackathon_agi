@@ -45,20 +45,6 @@ public class MovimentacaoService {
                 .orElseThrow(() -> new RuntimeException("Movimento nao encontrado."));
     }
 
-    public Movimentacao solicitarEmprestimo(String movimentoId, String sku) {
-        Movimentacao request = EquipamentoService.verificarEquipamentosDisponiveisPorSku(sku);
-
-        /*
-        return movimentacaoRepository.findById(movimentoId)
-                .map(m -> {
-                    m.setDataMovimentacao(LocalDateTime.now());
-                    m.setStatusMovimentacao(StatusMovimentacao.DEVOLUCAO);
-                    return movimentacaoRepository.save(m);
-                })
-                .orElseThrow(() -> new RuntimeException("Movimento nao encontrado."));
-
-         */
-    }
 
 
     public List<Movimentacao> getHistoricoFuncionario(String funcionarioId) {

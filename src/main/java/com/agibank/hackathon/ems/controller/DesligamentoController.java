@@ -14,7 +14,6 @@ public class DesligamentoController {
 
     @Autowired
     private FuncionarioService funcionarioService;
-
 //    @PostMapping("/{cpf}")
 //    public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf,
 //                                                        @RequestBody SolicitarDesligamentoFuncionarioRequest request) {
