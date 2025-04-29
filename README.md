@@ -32,11 +32,14 @@ Lombok (Para redução de boilerplate no Java)
 Postman (Para testes de API)
 
 🧩 Estrutura do Projeto
+```text
 com.agibank.hackathon.ems
-├── controller         # Controllers REST para APIs de Funcionário, Equipamento, Movimentação e Desligamento
-├── entity             # Entidades: Funcionario, Equipamento, Movimentacao, Desligamento
-├── service            # Lógicas de negócio
-├── repository         # Repositórios de acesso ao MongoDB
-├── exceptions         # Classes de exceções customizadas
-├── mapper             # Conversão entre entidades e requests/responses
-├── config             # Configurações gerais
+├── controller     # Controllers REST para APIs de Funcionário, Equipamento, Movimentação e Desligamento
+├── entity         # Entidades: Funcionario, Equipamento, Movimentacao, Desligamento
+├── service        # Lógicas de negócio
+├── repository     # Repositórios de acesso ao MongoDB
+├── exceptions     # Classes de exceções customizadas
+├── mapper         # Conversão entre entidades e requests/responses
+└── config         # Configurações gerais
+
+
