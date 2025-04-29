@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class EditarStatusMovimentacaoRequest {
+public class SolicitarDevolucaoMovimentacaoRequest {
 
     private StatusMovimentacao movimentacao;
 }
