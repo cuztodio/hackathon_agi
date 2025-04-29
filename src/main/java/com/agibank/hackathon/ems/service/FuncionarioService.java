@@ -61,18 +61,14 @@ import java.util.List;
                 .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com CPF " + cpf + " não encontrado"));
     }
 
-    public List<Funcionario> listarFuncionariosPorStatus(String status) {
-        StatusFuncionario statusEnum;
-
-        try {
-            statusEnum = StatusFuncionario.valueOf(status.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Status inválido: " + status);
-        }
-
-        return funcionarioRepository.findByStatus(statusEnum);
+    public List<Funcionario> listarFuncionariosPorStatus(StatusFuncionario status) {
+        return funcionarioRepository.findByStatus(status);
     }
 
+    public Funcionario retornarFuncionarioPorId(String id) {
+        return funcionarioRepository.findById(id)
+                .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com ID " + id + " não encontrado"));
+    }
 
 
 

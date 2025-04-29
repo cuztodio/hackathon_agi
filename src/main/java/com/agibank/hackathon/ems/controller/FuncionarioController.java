@@ -5,6 +5,7 @@ import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionario
 import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Funcionario;
+import com.agibank.hackathon.ems.enums.StatusFuncionario;
 import com.agibank.hackathon.ems.repository.FuncionarioRepository;
 import com.agibank.hackathon.ems.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ List<Funcionario> listarFuncionarios() {
 }
 
 @GetMapping("/status")
-public ResponseEntity<List<Funcionario>> listarStatus(@RequestParam String status) {
+public ResponseEntity<List<Funcionario>> listarStatus(@RequestParam StatusFuncionario status) {
     List<Funcionario> funcionarios = funcionarioService.listarFuncionariosPorStatus(status);
     return ResponseEntity.ok(funcionarios);
 }
@@ -52,6 +53,12 @@ public ResponseEntity<List<Funcionario>> listarStatus(@RequestParam String statu
     funcionarioService.solicitarDesligamento(cpf, request);
     return ResponseEntity.ok("Funcionário desligado com sucesso!");
 }
+
+ @GetMapping("/{cpf}/cpf")
+    public ResponseEntity<Funcionario> buscarFuncionarioPorCpf(@PathVariable String cpf) {
+        Funcionario funcionario = funcionarioService.verificarFuncionarioExistente(cpf);
+        return ResponseEntity.ok(funcionario);
+    }
 
 
 
