@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface OrdemDeCompraRepository extends MongoRepository<OrdemDeCompra, String> {
 
-    Optional<OrdemDeCompra> findById(String id);
 
 
 

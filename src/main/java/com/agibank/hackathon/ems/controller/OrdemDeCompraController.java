@@ -23,28 +23,26 @@ public class OrdemDeCompraController {
     OrdemDeCompraService ocService;
 
     @GetMapping
-    List<OrdemDeCompra> listarOrdensDeCompra (){
+    List<OrdemDeCompra> listarOrdensDeCompra() {
         return ocRepository.findAll();
     }
 
     @PostMapping
-    public ResponseEntity<String> criarOrdemDeCompra (@RequestBody CriarOrdemDeCompraRequest request) {
+    public ResponseEntity<String> criarOrdemDeCompra(@RequestBody CriarOrdemDeCompraRequest request) {
         ocService.criarOrdemDeCompra(request);
         return ResponseEntity.ok("Ordem de Compra Registrada");
     }
 
 
-    /*
-    @PatchMapping ("/{id}")
-    public ResponseEntity<String> atualizarStatusOC (@PathVariable OrdemDeCompra id,
-                                                     @RequestBody EditarStatusOrdemDeCompraRequest request) {
-        ocService.alterarStatusOC(request);
-
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> atualizarStatusOC(@PathVariable String id,
+                                                    @RequestBody EditarStatusOrdemDeCompraRequest request) {
+        ocService.alterarStatusOC(id, request);
+        return ResponseEntity.ok("Ordem de Compra Concluída!");
     }
-    
-     */
-
-
 
 
 }
+
+
+

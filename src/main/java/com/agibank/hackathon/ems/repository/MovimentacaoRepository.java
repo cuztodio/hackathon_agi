@@ -12,36 +12,29 @@ import java.time.LocalDateTime;
 @Repository
 public interface MovimentacaoRepository extends MongoRepository<Movimentacao, String> {
 
-    /*
-    // Movimentacoes por usuario
-    List<Movimentacao> findByFuncionarioId(String funcionarioId);
+     // Movimentacoes por usuario
+     List<Movimentacao> findByFuncionarioId(String funcionarioId);
 
-    //Movimentacoes do equipamento
-    List<Movimentacao> findByEquipamentoId(String equipamentoId);
+     //Movimentacoes do equipamento
+     List<Movimentacao> findByEquipamentoId(String equipamentoId);
 
-    //Movimentções do equipamento por cpf
-    List<Movimentacao> findByCpf(String cpf);
+     //Movimentções do equipamento por cpf
+     List<Movimentacao> findByCpf(String cpf);
 
-    //Movimentacoes por status
-    List<Movimentacao> findByStatusMovimentacao(StatusMovimentacao statusMovimentacao);
+     //Movimentacoes por status
+     List<Movimentacao> findByStatusMovimentacao(StatusMovimentacao statusMovimentacao);
 
-    //Movimentacoes por data
-    //Encontrar emprestimos ativos
-    @Query ("{'dataDevolucao': null}")
-    List<Movimentacao> findAtivos();
+     //Movimentacoes por data
+     //Encontrar emprestimos ativos
+     @Query ("{'dataDevolucao': null}")
+     List<Movimentacao> findAtivos();
 
-    // Find itens a serem devolvidos por funcionario
-    @Query("{ 'funcionarioId' : ?0, 'status' : 'EMPRESTADO' }")
-    List<Movimentacao> findPendencias(String funcionarioId);
+     // Find itens a serem devolvidos por funcionario
+     @Query("{ 'funcionarioId' : ?0, 'status' : 'EMPRESTADO' }")
+     List<Movimentacao> findPendencias(String funcionarioId);
 
-    // Find movimentacoes por funcionario e equipamento
-<<<<<<< HEAD
-    //List<Movimentacao> findByFuncionarioIdAndEquipamentoId(String funcionarioId, String equipamentoId);
-
-     */
-=======
-   // List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId);
+     // Find movimentacoes por funcionario e equipamento
+     // List<Movimentacao> findByFuncionarioIdandEquipamentoId(String funcionarioId, String equipamentoId);
 
      List<Movimentacao> findByFuncionarioIdAndEquipamentoId(String funcionarioId, String equipamentoId);
->>>>>>> 29b679401db56059299f9da50c1b700ea3987884
 }
