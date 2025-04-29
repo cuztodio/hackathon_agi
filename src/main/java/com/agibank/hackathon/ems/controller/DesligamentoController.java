@@ -14,14 +14,5 @@ public class DesligamentoController {
 
     @Autowired
     private FuncionarioService funcionarioService;
-//    @PostMapping("/{cpf}")
-//    public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf,
-//                                                        @RequestBody SolicitarDesligamentoFuncionarioRequest request) {
-//        try {
-//            funcionarioService.solicitarDesligamento(cpf, request);
-//            return ResponseEntity.ok("Solicitação de desligamento concluída com sucesso.");
-//        } catch (InvocationTargetException | IllegalAccessException e) {
-//            return ResponseEntity.badRequest().body("Erro ao solicitar desligamento: " + e.getMessage());
-//        }
-//    }
+
 }
