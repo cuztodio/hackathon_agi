@@ -2,7 +2,6 @@ package com.agibank.hackathon.ems.controller.request.movimentacao;
 
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,7 +15,7 @@ public class SolicitarEmprestimoFuncionarioRequest {
     private String cpf;
 
     @NotBlank
-    private String Sku;
+    private String sku;
 
     private LocalDateTime dataMovimentacao;
 
