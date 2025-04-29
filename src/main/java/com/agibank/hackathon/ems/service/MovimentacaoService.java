@@ -53,4 +53,11 @@ public class MovimentacaoService {
     public List<Movimentacao> buscarPorStatus(StatusMovimentacao status) {
         return movimentacaoRepository.findByStatusMovimentacao(status);
     }
+
+    public List<String> listarEquipamentosPorFuncionario(String funcionarioId) {
+        return movimentacaoRepository.findByFuncionarioId(funcionarioId).stream()
+                .map(Movimentacao::getEquipamentoId)
+                .distinct()
+                .toList();
+    }
 }
