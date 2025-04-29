@@ -2,6 +2,7 @@ package com.agibank.hackathon.ems.mapper;
 
 import com.agibank.hackathon.ems.controller.request.movimentacao.CriarMovimentacaoRequest;
 import com.agibank.hackathon.ems.controller.request.movimentacao.EditarMovimentacaoRequest;
+import com.agibank.hackathon.ems.controller.request.movimentacao.SolicitarEmprestimoFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Movimentacao;
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import jakarta.validation.Valid;
@@ -27,4 +28,5 @@ public class MovimentacaoMapper {
                 .dataMovimentacao(request.getDataMovimentacao())
                 .build();
     }
+
 }
