@@ -70,4 +70,14 @@ public class MovimentacaoService {
 
         return equipamentoRepository.findAllById(idsEquipamentos);
     }
+
+    public List<String> getFuncionariosPorEquipamento(String equipamentoId) {
+        List<Movimentacao> movimentacoes = movimentacaoRepository.findByEquipamentoId(equipamentoId);
+
+        return movimentacoes.stream()
+                .map(Movimentacao::getFuncionarioId)
+                .distinct()
+                .toList();
+    }
+
 }
