@@ -59,11 +59,9 @@ import java.lang.reflect.InvocationTargetException;
                 .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com CPF " + cpf + " não encontrado"));
     }
 
-
-
-
-
-
+    public List<Funcionario> listarFuncionariosPorStatus(StatusFuncionario status) {
+        return funcionarioRepository.findByStatus(status);
+    }
 
 
 }

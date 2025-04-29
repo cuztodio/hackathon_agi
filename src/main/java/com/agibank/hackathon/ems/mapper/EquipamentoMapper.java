@@ -13,12 +13,10 @@ import org.springframework.stereotype.Component;
 public class EquipamentoMapper {
     public Equipamentos cadastroEquipamento(@Valid CriarEquipamentoRequest request) {
         return Equipamentos.builder()
-
                 .tipo(request.getTipo())
                 .modelo(request.getModelo())
                 .sku(request.getSku())
                 .statusEquipamento(StatusEquipamento.DISPONIVEL)
-
                 .build();
     }
 
