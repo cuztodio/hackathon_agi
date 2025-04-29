@@ -6,6 +6,7 @@ import com.agibank.hackathon.ems.controller.request.oc.CriarOrdemDeCompraRequest
 import com.agibank.hackathon.ems.entity.Equipamentos;
 import com.agibank.hackathon.ems.entity.OrdemDeCompra;
 import com.agibank.hackathon.ems.enums.StatusEquipamento;
+import com.agibank.hackathon.ems.enums.StatusOrdemDeCompra;
 import com.agibank.hackathon.ems.mapper.EquipamentoMapper;
 import com.agibank.hackathon.ems.mapper.OrdemDeCompraMapper;
 import com.agibank.hackathon.ems.repository.EquipamentoRepository;
@@ -36,13 +37,17 @@ public class EquipamentoService {
     }
 
 
-    public List<Equipamentos> verificarEquipamentosDisponiveisPorSku(String sku) {
+    public List<Equipamentos> verificarEquipamentosDisponiveisPorSku( CriarOrdemDeCompraRequest request,String sku) {
         List<Equipamentos> equipamentosDisponiveis = equipamentoRepository.findBySku(sku).stream()
-        .filter(equipamento -> equipamento.getStatusEquipamento() == StatusEquipamento.DISPONIVEL).toList();
+                .filter(equipamento -> equipamento.getStatusEquipamento() == StatusEquipamento.DISPONIVEL).toList();
+
         if (equipamentosDisponiveis.isEmpty()) {
-            // TODO: fazer um fucionario
-            throw new RuntimeException("Nenhum equipamento encontrado com o SKU fornecido.");
+            ordemDeCompraService.criarOrdemDeCompra(request, sku);
+
+            throw new RuntimeException("Nenhum equipamento encontrado com o SKU fornecido. " +
+                    "Uma ordem de compra foi criada para o SKU: " + sku);
         }
+
         return equipamentosDisponiveis;
     }
 
