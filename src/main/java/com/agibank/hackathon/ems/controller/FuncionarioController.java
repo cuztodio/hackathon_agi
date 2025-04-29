@@ -30,22 +30,17 @@ public class FuncionarioController {
         return ResponseEntity.ok("Cadastro Concluído");
     }
 
-@GetMapping("/listar")
-List<Funcionario> listarFuncionarios() {
-    return (List<Funcionario>) funcionarioRepository.findAll();
-}
-
-@GetMapping("/status")
-public ResponseEntity<List<Funcionario>> listarStatus(@RequestParam String status) {
-    List<Funcionario> funcionarios = funcionarioService.listarFuncionariosPorStatus(status);
-    return ResponseEntity.ok(funcionarios);
-}
+    @GetMapping
+    List<Funcionario> listarFuncionarios(){
+        return (List<Funcionario>) funcionarioRepository.findAll();
+    }
 
     @PutMapping("/{id}/editar")
     public ResponseEntity<String> editarFuncionario (@PathVariable String id , @RequestBody EditarFuncionarioRequest request){
         funcionarioService.editarFuncionario(id,request);
         return ResponseEntity.ok("Funcionario editado com sucesso!");
     }
+
 
   @PatchMapping("/cpf/{cpf}/desligar")
  public ResponseEntity<String> solicitarDesligamento(@PathVariable String cpf, @RequestBody SolicitarDesligamentoFuncionarioRequest request) throws InvocationTargetException, IllegalAccessException {
