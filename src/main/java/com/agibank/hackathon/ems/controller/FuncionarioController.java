@@ -74,7 +74,7 @@ public class FuncionarioController {
         return ResponseEntity.ok("Funcionário deletado com sucesso!");
     }
 
-    @PostMapping("emprestimo")
+    @PostMapping("/emprestimo")
     public ResponseEntity<EmprestimoFuncionarioResponse> solicitarEquipamentoFuncionario(
             @RequestBody SolicitarEmprestimoFuncionarioRequest request) {
 
