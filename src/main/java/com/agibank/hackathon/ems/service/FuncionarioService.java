@@ -1,6 +1,5 @@
 package com.agibank.hackathon.ems.service;
 
-import com.agibank.hackathon.ems.controller.request.equipamento.EditarStatusEquipamentoRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 @Service
  public class FuncionarioService {
@@ -64,17 +62,6 @@ import java.util.List;
     public List<Funcionario> listarFuncionariosPorStatus(StatusFuncionario status) {
         return funcionarioRepository.findByStatus(status);
     }
-
-    public Funcionario retornarFuncionarioPorId(String id) {
-        return funcionarioRepository.findById(id)
-                .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com ID " + id + " não encontrado"));
-    }
-
-
-
-
-
-
 
 
 }
