@@ -19,6 +19,7 @@ Equipamentos em posse de colaboradores.
 Funcionários com pendências na devolução de equipamentos.
 
 🛠️ Tecnologias Utilizadas
+```text
 Java 21
 
 Spring Boot 3
@@ -30,6 +31,7 @@ Gradle (Gerenciamento de dependências)
 Lombok (Para redução de boilerplate no Java)
 
 Postman (Para testes de API)
+```
 
 🧩 Estrutura do Projeto
 ```text
@@ -39,7 +41,6 @@ com.agibank.hackathon.ems
 ├── service        # Lógicas de negócio
 ├── repository     # Repositórios de acesso ao MongoDB
 ├── exceptions     # Classes de exceções customizadas
-├── mapper         # Conversão entre entidades e requests/responses
-└── config         # Configurações gerais
-
+└── mapper         # Conversão entre entidades e requests/responses
+```
 
