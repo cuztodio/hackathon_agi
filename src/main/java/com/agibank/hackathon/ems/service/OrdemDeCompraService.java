@@ -50,23 +50,14 @@ public class OrdemDeCompraService {
         return ocRepository.save(ordemDeCompra);
     }
 
-    public OrdemDeCompra alterarStatusOC (OrdemDeCompra ordemDeCompra) {
-        StatusOrdemDeCompra status = ordemDeCompra.getComprado();
-        if (status == StatusOrdemDeCompra.PENDENTE) {
-            ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
-            //aloca equipamento para funcionario pelo id (cria nova movimentação)
-        }
-        return ocRepository.save(ordemDeCompra);
-    }
-
 
     public OrdemDeCompra alterarStatusOC (String id, EditarStatusOrdemDeCompraRequest request) {
 
         OrdemDeCompra ordemDeCompra =  ocRepository.findById(id)
                 .orElseThrow(() -> new OrdemDeCompraNaoEncontrada("Ordem de compra não encontrada com ID: " + id));
-        StatusOrdemDeCompra status = request.getComprado();
+        StatusOrdemDeCompra status = request.getStatus();
         if (status == StatusOrdemDeCompra.CONCLUIDA) {
-            ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
+            ordemDeCompra.setStatus(StatusOrdemDeCompra.CONCLUIDA);
             Equipamentos equipamento = Equipamentos.builder()
                     .tipo("Notebook - New")
                     .modelo("Dell Cinza")
