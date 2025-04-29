@@ -2,6 +2,7 @@ package com.agibank.hackathon.ems.controller;
 
 import com.agibank.hackathon.ems.controller.request.equipamento.CriarEquipamentoRequest;
 import com.agibank.hackathon.ems.controller.request.equipamento.EditarStatusEquipamentoRequest;
+import com.agibank.hackathon.ems.controller.request.oc.CriarOrdemDeCompraRequest;
 import com.agibank.hackathon.ems.entity.Equipamentos;
 import com.agibank.hackathon.ems.repository.EquipamentoRepository;
 import com.agibank.hackathon.ems.service.EquipamentoService;
@@ -38,8 +39,8 @@ public class EquipamentoController {
     }
 
     @GetMapping("/disponiveis")
-    public ResponseEntity<List<Equipamentos>> listarEquipamentosDisponiveisPorSku(@RequestParam String sku) {
-        List<Equipamentos> equipamentosDisponiveis = equipamentoService.verificarEquipamentosDisponiveisPorSku(sku);
+    public ResponseEntity<List<Equipamentos>> listarEquipamentosDisponiveisPorSku(CriarOrdemDeCompraRequest request, @PathVariable String sku) {
+        List<Equipamentos> equipamentosDisponiveis = equipamentoService.verificarEquipamentosDisponiveisPorSku(request,sku);
         return ResponseEntity.ok(equipamentosDisponiveis);
     }
 
