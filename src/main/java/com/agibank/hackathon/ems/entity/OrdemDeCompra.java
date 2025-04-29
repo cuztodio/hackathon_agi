@@ -15,5 +15,5 @@ public class OrdemDeCompra {
     private String id;
     private String idFuncionario;
     private String sku;
-    private StatusOrdemDeCompra comprado;
+    private StatusOrdemDeCompra status;
 }

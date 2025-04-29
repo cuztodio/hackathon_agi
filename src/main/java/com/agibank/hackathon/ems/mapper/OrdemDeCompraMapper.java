@@ -15,7 +15,7 @@ public class OrdemDeCompraMapper {
         return OrdemDeCompra.builder()
                 .idFuncionario(request.getIdFuncionario())
                 .sku(request.getSku())
-                .comprado(StatusOrdemDeCompra.PENDENTE)
+                .status(StatusOrdemDeCompra.PENDENTE)
                 .build();
     }
 
@@ -23,7 +23,7 @@ public class OrdemDeCompraMapper {
         return OrdemDeCompra.builder()
                 .idFuncionario(request.getIdFuncionario())
                 .sku(request.getSku())
-                .comprado(request.getComprado())
+                .status(request.getComprado())
                 .build();
     }
 

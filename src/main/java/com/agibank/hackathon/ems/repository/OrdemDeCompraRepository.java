@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface OrdemDeCompraRepository extends MongoRepository<OrdemDeCompra, String> {
-    List<OrdemDeCompra> findByStatus(StatusOrdemDeCompra statusOrdemDeCompra);
+    List<OrdemDeCompra> findByStatus (StatusOrdemDeCompra statusOrdemDeCompra);
 }

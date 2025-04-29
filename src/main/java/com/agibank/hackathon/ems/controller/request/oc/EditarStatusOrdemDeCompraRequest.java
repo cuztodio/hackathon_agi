@@ -8,5 +8,5 @@ import lombok.Data;
 @Builder
 @Data
 public class EditarStatusOrdemDeCompraRequest {
-    private StatusOrdemDeCompra comprado;
+    private StatusOrdemDeCompra status;
 }
