@@ -35,11 +35,19 @@ public class FuncionarioController {
         return (List<Funcionario>) funcionarioRepository.findAll();
     }
 
+    @GetMapping
+    public ResponseEntity<List<Funcionario>> listarStatus(@RequestParam String status) {
+        List<Funcionario> funcionarios = funcionarioService.listarFuncionariosPorStatus(status);
+        return ResponseEntity.ok(funcionarios);
+    }
+
     @PutMapping("/{id}/editar")
     public ResponseEntity<String> editarFuncionario (@PathVariable String id , @RequestBody EditarFuncionarioRequest request){
         funcionarioService.editarFuncionario(id,request);
         return ResponseEntity.ok("Funcionario editado com sucesso!");
     }
+
+
 
 
   @PatchMapping("/cpf/{cpf}/desligar")
