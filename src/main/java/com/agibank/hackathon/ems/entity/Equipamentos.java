@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -14,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Equipamentos {
     @Id
-    private String id;
+    private String idEquipamento;
     private StatusEquipamento statusEquipamento;
 
     @NotBlank
