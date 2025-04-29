@@ -23,11 +23,10 @@ public class MovimentacaoService {
     @Autowired
     private MovimentacaoMapper movimentacaoMapper;
 
+    private final MovimentacaoRepository movimentacaoRepository;
 
     @Autowired
     private EquipamentoRepository equipamentoRepository;
-
-    private final MovimentacaoRepository movimentacaoRepository;
 
     public Movimentacao criarMovimento(CriarMovimentacaoRequest request) {
        Movimentacao movimentacao = movimentacaoMapper.cadastroMovimentacao(request);
@@ -51,6 +50,17 @@ public class MovimentacaoService {
                 .orElseThrow(() -> new RuntimeException("Movimento nao encontrado."));
     }
 
+    public Movimentacao solicitarEmprestimo(String movimentoId) {
+        return movimentacaoRepository.findById(movimentoId)
+                .map(m -> {
+                    m.setDataMovimentacao(LocalDateTime.now());
+                    m.setStatusMovimentacao(StatusMovimentacao.EMPRESTADO);
+                    return movimentacaoRepository.save(m);
+                })
+                .orElseThrow(() -> new RuntimeException("Movimento nao encontrado."));
+    }
+
+
 
     public List<Movimentacao> getHistoricoFuncionario(String funcionarioId) {
         return movimentacaoRepository.findByFuncionarioId(funcionarioId);
@@ -64,7 +74,7 @@ public class MovimentacaoService {
         List<Movimentacao> movimentacoes = movimentacaoRepository.findByFuncionarioId(funcionarioId);
 
         List<String> idsEquipamentos = movimentacoes.stream()
-                .map(Movimentacao::getEquipamentoId) // Assumindo que existe esse campo
+                .map(Movimentacao::getEquipamentoId)
                 .distinct()
                 .toList();
 

@@ -39,8 +39,9 @@ public class OrdemDeCompraService {
             return ocRepository.findAll();
     }
 
-    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request) {
+    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request, String sku) {
         OrdemDeCompra ordemDeCompra = ocMapper.criarOrdemDeCompra(request);
+        ordemDeCompra.setSku(sku);
         return ocRepository.save(ordemDeCompra);
     }
 
@@ -49,25 +50,16 @@ public class OrdemDeCompraService {
         return ocRepository.save(ordemDeCompra);
     }
 
-    public OrdemDeCompra alterarStatusOC (OrdemDeCompra ordemDeCompra) {
-        StatusOrdemDeCompra status = ordemDeCompra.getComprado();
-        if (status == StatusOrdemDeCompra.PENDENTE) {
-            ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
-            //aloca equipamento para funcionario pelo id (cria nova movimentação)
-        }
-        return ocRepository.save(ordemDeCompra);
-    }
-
 
     public OrdemDeCompra alterarStatusOC (String id, EditarStatusOrdemDeCompraRequest request) {
 
         OrdemDeCompra ordemDeCompra =  ocRepository.findById(id)
                 .orElseThrow(() -> new OrdemDeCompraNaoEncontrada("Ordem de compra não encontrada com ID: " + id));
-        StatusOrdemDeCompra status = request.getComprado();
+        StatusOrdemDeCompra status = request.getStatus();
         if (status == StatusOrdemDeCompra.CONCLUIDA) {
-            ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
+            ordemDeCompra.setStatus(StatusOrdemDeCompra.CONCLUIDA);
             Equipamentos equipamento = Equipamentos.builder()
-                    .tipo("Notebook")
+                    .tipo("Notebook - New")
                     .modelo("Dell Cinza")
                     .sku(ordemDeCompra.getSku())
                     .statusEquipamento(StatusEquipamento.ALOCADO)
@@ -85,5 +77,10 @@ public class OrdemDeCompraService {
         }
         return ocRepository.save(ordemDeCompra);
     }
+
+    public List<OrdemDeCompra> listarOCsPendentes () {
+        return ocRepository.findByStatus(StatusOrdemDeCompra.PENDENTE);
+    }
+
 
 }
