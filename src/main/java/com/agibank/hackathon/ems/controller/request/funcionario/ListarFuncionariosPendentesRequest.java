@@ -13,7 +13,7 @@ public class ListarFuncionariosPendentesRequest {
         this.funcionarioRepository = funcionarioRepository;
     }
 
-    public List<Funcionario> listarFuncionariosEmDesligamento() {
-        return funcionarioRepository.findByStatus(StatusFuncionario.EM_DESLIGAMENTO);
-    }
+   /* public List<Funcionario> listarFuncionariosEmDesligamento() {
+        return funcionarioRepository.findBy(StatusFuncionario.EM_DESLIGAMENTO);
+    } */
 }
