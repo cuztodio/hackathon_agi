@@ -2,6 +2,7 @@ package com.agibank.hackathon.ems.service;
 
 import com.agibank.hackathon.ems.controller.request.funcionario.CriarFuncionarioRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.EditarFuncionarioRequest;
+import com.agibank.hackathon.ems.controller.request.funcionario.ListarFuncionariosPendentesRequest;
 import com.agibank.hackathon.ems.controller.request.funcionario.SolicitarDesligamentoFuncionarioRequest;
 import com.agibank.hackathon.ems.entity.Funcionario;
 import com.agibank.hackathon.ems.enums.StatusFuncionario;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 @Service
  public class FuncionarioService {
@@ -59,9 +61,12 @@ import java.lang.reflect.InvocationTargetException;
                 .orElseThrow(() -> new FuncionarioNaoEncontradoException("Funcionário com CPF " + cpf + " não encontrado"));
     }
 
+    public void exemploListagem() {
+        ListarFuncionariosPendentesRequest request = new ListarFuncionariosPendentesRequest(funcionarioRepository);
+        List<Funcionario> pendentes = request.listarFuncionariosEmDesligamento();
 
-
-
+        pendentes.forEach(func -> System.out.println(func.getNome()));
+    }
 
 
 
