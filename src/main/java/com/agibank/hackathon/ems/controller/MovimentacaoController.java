@@ -64,4 +64,10 @@ public class MovimentacaoController {
         List<String> funcionarios = movimentacaoService.getFuncionariosPorEquipamento(equipamentoId);
         return ResponseEntity.ok(funcionarios);
     }
+
+    @PatchMapping("/{movimentoId}/manutencao")
+    public ResponseEntity<Movimentacao> solicitarManutencao(@PathVariable String movimentoId) {
+        Movimentacao emManutencao = movimentacaoService.solicitarManutencao(movimentoId);
+        return ResponseEntity.ok(emManutencao);
+    }
 }

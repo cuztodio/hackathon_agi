@@ -80,4 +80,13 @@ public class MovimentacaoService {
                 .toList();
     }
 
+    public Movimentacao solicitarManutencao(String movimentoId) {
+        return movimentacaoRepository.findById(movimentoId)
+                .map(m -> {
+                    m.setStatusMovimentacao(StatusMovimentacao.MANUTENCAO);
+                    m.setDataMovimentacao(LocalDateTime.now());
+                    return movimentacaoRepository.save(m);
+                })
+                .orElseThrow(() -> new RuntimeException("Movimentação não encontrada"));
+    }
 }
