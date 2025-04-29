@@ -2,6 +2,7 @@ package com.agibank.hackathon.ems.controller;
 
 import com.agibank.hackathon.ems.controller.request.movimentacao.CriarMovimentacaoRequest;
 import com.agibank.hackathon.ems.controller.request.movimentacao.EditarMovimentacaoRequest;
+import com.agibank.hackathon.ems.entity.Equipamentos;
 import com.agibank.hackathon.ems.entity.Movimentacao;
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import com.agibank.hackathon.ems.repository.MovimentacaoRepository;
@@ -52,9 +53,9 @@ public class MovimentacaoController {
         return ResponseEntity.ok(movimentacoes);
     }
 
-    @GetMapping("/funcionario/{funcionarioId}/equipamentos")
-    public ResponseEntity<List<String>> getEquipamentosPorFuncionario(@PathVariable String funcionarioId) {
-        List<String> equipamentos = movimentacaoService.listarEquipamentosPorFuncionario(funcionarioId);
+    @GetMapping("/equipamentos/{funcionarioId}")
+    public ResponseEntity<List<Equipamentos>> listarEquipamentosDoFuncionario(@PathVariable String funcionarioId) {
+        List<Equipamentos> equipamentos = movimentacaoService.getEquipamentosFuncionario(funcionarioId);
         return ResponseEntity.ok(equipamentos);
     }
 }
