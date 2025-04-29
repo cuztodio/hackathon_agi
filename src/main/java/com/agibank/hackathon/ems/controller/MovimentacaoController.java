@@ -58,4 +58,10 @@ public class MovimentacaoController {
         List<Equipamentos> equipamentos = movimentacaoService.getEquipamentosFuncionario(funcionarioId);
         return ResponseEntity.ok(equipamentos);
     }
+
+    @GetMapping("/funcionarios/{equipamentoId}")
+    public ResponseEntity<List<String>> listarFuncionariosPorEquipamento(@PathVariable String equipamentoId) {
+        List<String> funcionarios = movimentacaoService.getFuncionariosPorEquipamento(equipamentoId);
+        return ResponseEntity.ok(funcionarios);
+    }
 }

@@ -13,5 +13,4 @@ public interface EquipamentoRepository extends MongoRepository <Equipamentos,Str
 
     List<Equipamentos> findBySku(String sku);
 
-    List<Equipamentos> findByFuncionarioCpf(String cpf);
 }
