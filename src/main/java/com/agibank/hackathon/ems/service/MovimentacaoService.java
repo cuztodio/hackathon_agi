@@ -1,6 +1,6 @@
 package com.agibank.hackathon.ems.service;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+
+import com.agibank.hackathon.ems.controller.request.movimentacao.CriarMovimentacaoRequest;
 import com.agibank.hackathon.ems.entity.Movimentacao;
 import com.agibank.hackathon.ems.enums.StatusMovimentacao;
 import com.agibank.hackathon.ems.repository.MovimentacaoRepository;
@@ -17,9 +17,14 @@ public class MovimentacaoService {
 
     private final MovimentacaoRepository movimentacaoRepository;
 
-    public Movimentacao criarMovimento(Movimentacao movimentacao) {
-        movimentacao.setDataMovimentacao(LocalDateTime.now());
-        movimentacao.setStatusMovimentacao(StatusMovimentacao.EMPRESTADO);
+    public Movimentacao criarMovimento(CriarMovimentacaoRequest request) {
+        Movimentacao movimentacao = Movimentacao.builder()
+                .funcionarioId(request.getEmployeeId()) // ou funcionarioId
+                .equipamentoId(request.getEquipmentId())
+                .dataMovimentacao(LocalDateTime.now())
+                .statusMovimentacao(StatusMovimentacao.EMPRESTADO)
+                .build();
+
         return movimentacaoRepository.save(movimentacao);
     }
 
