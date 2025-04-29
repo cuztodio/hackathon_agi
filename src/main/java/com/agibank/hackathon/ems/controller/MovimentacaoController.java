@@ -39,9 +39,10 @@ public class MovimentacaoController {
         return ResponseEntity.ok("Movimentacao alterada");
     }
 
-    @GetMapping("/movimentacao/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<List<Movimentacao>> mostrarMovimentacoes(@PathVariable String id){
         List<Movimentacao> historico = movimentacaoService.getHistoricoFuncionario(id);
         return ResponseEntity.ok(historico);
     }
+
 }
