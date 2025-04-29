@@ -39,8 +39,9 @@ public class OrdemDeCompraService {
             return ocRepository.findAll();
     }
 
-    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request) {
+    public OrdemDeCompra criarOrdemDeCompra (CriarOrdemDeCompraRequest request, String sku) {
         OrdemDeCompra ordemDeCompra = ocMapper.criarOrdemDeCompra(request);
+        ordemDeCompra.setSku(sku);
         return ocRepository.save(ordemDeCompra);
     }
 
@@ -67,7 +68,7 @@ public class OrdemDeCompraService {
         if (status == StatusOrdemDeCompra.CONCLUIDA) {
             ordemDeCompra.setComprado(StatusOrdemDeCompra.CONCLUIDA);
             Equipamentos equipamento = Equipamentos.builder()
-                    .tipo("Notebook")
+                    .tipo("Notebook - New")
                     .modelo("Dell Cinza")
                     .sku(ordemDeCompra.getSku())
                     .statusEquipamento(StatusEquipamento.ALOCADO)
@@ -85,5 +86,10 @@ public class OrdemDeCompraService {
         }
         return ocRepository.save(ordemDeCompra);
     }
+
+    public List<OrdemDeCompra> listarOCsPendentes () {
+        return ocRepository.findByStatus(StatusOrdemDeCompra.PENDENTE);
+    }
+
 
 }

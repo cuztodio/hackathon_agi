@@ -4,6 +4,7 @@ package com.agibank.hackathon.ems.controller;
 import com.agibank.hackathon.ems.controller.request.oc.CriarOrdemDeCompraRequest;
 import com.agibank.hackathon.ems.controller.request.oc.EditarStatusOrdemDeCompraRequest;
 import com.agibank.hackathon.ems.entity.OrdemDeCompra;
+import com.agibank.hackathon.ems.enums.StatusOrdemDeCompra;
 import com.agibank.hackathon.ems.repository.OrdemDeCompraRepository;
 import com.agibank.hackathon.ems.service.OrdemDeCompraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,14 @@ public class OrdemDeCompraController {
         return ocRepository.findAll();
     }
 
+    @GetMapping("/pendentes")
+    List<OrdemDeCompra> listarOCsPendentes() {
+        return ocRepository.findByStatus(StatusOrdemDeCompra.PENDENTE);
+    }
+
     @PostMapping
-    public ResponseEntity<String> criarOrdemDeCompra(@RequestBody CriarOrdemDeCompraRequest request) {
-        ocService.criarOrdemDeCompra(request);
+    public ResponseEntity<String> criarOrdemDeCompra(@RequestBody CriarOrdemDeCompraRequest request, String sku) {
+        ocService.criarOrdemDeCompra(request, sku);
         return ResponseEntity.ok("Ordem de Compra Registrada");
     }
 

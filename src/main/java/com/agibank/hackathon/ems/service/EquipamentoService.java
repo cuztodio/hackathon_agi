@@ -42,10 +42,10 @@ public class EquipamentoService {
                 .filter(equipamento -> equipamento.getStatusEquipamento() == StatusEquipamento.DISPONIVEL).toList();
 
         if (equipamentosDisponiveis.isEmpty()) {
-            ordemDeCompraservice.criarOrdemDeCompra(request,sku);
-            ordemDeCompraService.criarOrdemDeCompra()
+            ordemDeCompraService.criarOrdemDeCompra(request, sku);
 
-            throw new RuntimeException("Nenhum equipamento encontrado com o SKU fornecido.");
+            throw new RuntimeException("Nenhum equipamento encontrado com o SKU fornecido. " +
+                    "Uma ordem de compra foi criada para o SKU: " + sku);
         }
 
         return equipamentosDisponiveis;
